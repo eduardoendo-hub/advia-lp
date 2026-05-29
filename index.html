@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-IA · Inteligência Artificial aplicada ao Direito — Impacta</title>
+<meta name="description" content="32 aulas e 15 horas de formação 100% online para advogados dominarem IA no Direito: engenharia de prompts jurídicos, agentes de IA e protocolos de segurança. Sem expor dados, sem jurisprudência inventada, sem precisar programar. Uma formação da Impacta com o Prof. Thiago Sobral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap">
+<link rel="stylesheet" href="styles/adv-ia-lp.css">
+
+<!-- ===================== ADV-IA · CONFIG DE TRACKING ===================== -->
+<script>
+window.ADVIA = {
+  PRODUCT_SLUG:      'advia',
+  CAMPAIGN_SLUG:     'advia-junho-2026',
+  META_PIXEL_ID:     '',                                 /* TODO: ADVIA Pixel (Events Manager) — preencher quando criar */
+  GTM_ID:            '',                                  /* TODO: ADVIA GTM container — preencher quando criar */
+  IRIS_EVENTS_URL:   'https://iris.technowhub.ai/api/events',
+  INTEGRACAO_RD_URL: 'https://rd.technowhub.ai',
+  CHECKOUT_URL:      'https://impacta.site.engaged.com.br/p/checkout/4jtt6rr7ti',
+  TICKET_VALUE:      497.00,
+  CURRENCY:          'BRL'
+};
+</script>
+
+<!-- Google Tag Manager (carrega só quando GTM_ID estiver configurado) -->
+<script>(function(w,d,s,l,i){if(!/^GTM-[A-Z0-9]+$/.test(i)){console.warn('[ADVIA] GTM_ID ainda não configurado — GTM inativo.');return;}w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',window.ADVIA.GTM_ID);</script>
+<!-- End Google Tag Manager -->
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+(function(){var id=(window.ADVIA&&window.ADVIA.META_PIXEL_ID)||'';if(/^[0-9]{6,}$/.test(id)){fbq('init',id);fbq('track','PageView');}else{console.warn('[ADVIA] META_PIXEL_ID ainda não configurado — Pixel inativo.');}})();
+</script>
+<!-- End Meta Pixel -->
+<!-- ====================================================================== -->
+</head>
+<body>
+<!-- GTM noscript (só funciona quando o container estiver configurado) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <defs>
+      <linearGradient id="bgg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#030200"/>
+        <stop offset="100%" stop-color="#001a33"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#bgg)"/>
+    <text x="200" y="180" font-family="Ubuntu,sans-serif" font-size="44" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="-1">Inteligência</text>
+    <text x="200" y="244" font-family="Ubuntu,sans-serif" font-size="96" font-weight="700" fill="#0A88F4" text-anchor="middle" letter-spacing="-4">ADV·IA</text>
+    <text x="200" y="288" font-family="Cormorant Garamond,serif" font-style="italic" font-size="20" fill="#E8B86A" text-anchor="middle">a inteligência artificial entra na banca</text>
+  </svg>
+</template>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ========== AMBIENT ========== -->
+<div class="ambient" aria-hidden="true">
+  <div class="ambient__orb ambient__orb--a"></div>
+  <div class="ambient__orb ambient__orb--b"></div>
+  <div class="ambient__orb ambient__orb--c"></div>
+  <div class="ambient__beam ambient__beam--1"></div>
+  <div class="ambient__beam ambient__beam--2"></div>
+  <div class="ambient__beam ambient__beam--3"></div>
+</div>
+
+<!-- ========== TOP BAR ========== -->
+<header class="bar" id="bar">
+  <a href="#topo" class="lockup lockup--md" aria-label="Impacta">
+    <img class="lockup__logo" src="assets/impacta-branco.png" alt="Impacta">
+  </a>
+  <nav class="bar__nav" aria-label="Seções">
+    <a href="#problema">O problema</a>
+    <a href="#resultado">Resultados</a>
+    <a href="#conteudo">Conteúdo</a>
+    <a href="#professor">Professor</a>
+    <a href="#preco">Investimento</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:0">
+    <a class="bar__cta" href="#preco">
+      Garantir meu acesso
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero hero--portrait" id="topo">
+  <canvas class="hero__canvas" id="net"></canvas>
+  <div class="hero__grid"></div>
+  <div class="hero__portrait" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=85" alt="">
+  </div>
+  <div class="hero__veil"></div>
+  <div class="hero__atmos" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="hero__pill hero__pill--ead"><span class="dot"></span>FORMAÇÃO 100% ONLINE · <em>IMPACTA</em></div>
+    <div class="hero__brand">
+      <span class="hero__brand-mark">ADV<em>·</em>IA</span>
+      <span class="hero__brand-rule"></span>
+      <span class="hero__brand-sub">Inteligência Artificial<br>aplicada ao Direito</span>
+    </div>
+    <h1 class="hero__title hero__title--oneline">
+      <span class="row"><span>O advogado ao lado já usa <em>IA</em>.</span></span>
+    </h1>
+    <p class="hero__tagline">Você ainda formata petição na mão.</p>
+    <p class="hero__lede">
+      E essa distância cresce a cada semana. O <strong>ADV-IA</strong> são <strong>32 aulas práticas</strong> e <strong>15 horas de formação</strong> para você dominar Inteligência Artificial no Direito — da construção de <strong>prompts jurídicos</strong> à criação dos seus próprios <strong>agentes de IA</strong>.
+    </p>
+    <div class="hero__sem">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sem expor dados do cliente.</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sem jurisprudência inventada.</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sem precisar programar.</span>
+    </div>
+    <div class="hero__actions">
+      <a href="#preco" class="btn btn--primary btn--lg">
+        Quero produzir mais em menos tempo
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=551132548300&text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ADVIA" target="_blank" rel="noopener" class="btn btn--ghost">
+        Tirar dúvidas no WhatsApp
+      </a>
+    </div>
+    <div class="hero__meta">
+      <div>
+        <div class="meta-k">Aulas</div>
+        <div class="meta-v"><em>32</em> aulas</div>
+        <div class="meta-sub">Em 4 módulos progressivos</div>
+      </div>
+      <div>
+        <div class="meta-k">Carga horária</div>
+        <div class="meta-v"><em>15h</em> de formação</div>
+        <div class="meta-sub">Aplicada e direto ao ponto</div>
+      </div>
+      <div>
+        <div class="meta-k">Formato</div>
+        <div class="meta-v">100% online</div>
+        <div class="meta-sub">Gravado · assista no seu ritmo</div>
+      </div>
+      <div>
+        <div class="meta-k">Acesso</div>
+        <div class="meta-v"><em>12</em> meses</div>
+        <div class="meta-sub">+ comunidade de alunos</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__cue">
+    <span>ROLE</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ========== TICKER ========== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="ticker">
+    <span class="ticker__item">ENGENHARIA DE PROMPT <span class="ticker__star">✦</span></span>
+    <span class="ticker__item">ENGENHARIA DE CONTEXTO <span class="ticker__star">✦</span></span>
+    <span class="ticker__item">AGENTES DE IA JURÍDICOS <span class="ticker__star">✦</span></span>
+    <span class="ticker__item">FRAMEWORKS PTF · CIPFE · PTLFPRCD <span class="ticker__star">✦</span></span>
+    <span class="ticker__item">SEGURANÇA DE DADOS SENSÍVEIS <span class="ticker__star">✦</span></span>
+    <span class="ticker__item">NOTEBOOKLM · GPTs PERSONALIZADOS <span class="ticker__star">✦</span></span>
+  </div>
+</div>
+
+<!-- ========== O PROBLEMA ========== -->
+<section class="section" id="problema">
+  <div class="reveal" style="max-width:72ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">01</span>O PROBLEMA</div>
+    <h2 class="h2">Você se formou para <em>pensar</em>. Mas passa o dia <span class="serif">digitando</span>.</h2>
+    <p class="lede">Nenhum professor avisou: a maior parte do seu tempo como advogado não seria gasta em tese, estratégia ou argumentação. Seria gasta em <strong style="color:#fff;font-weight:500">operação</strong>.</p>
+  </div>
+  <div class="reveal" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;max-width:1100px">
+    <p style="font-size:16px;line-height:1.7;color:var(--t2);margin:0">Formatar petição. Buscar jurisprudência manualmente. Revisar contrato cláusula por cláusula. Reescrever contestações que repetem a mesma estrutura das últimas dez. Os prazos apertam, os clientes cobram — e o dia termina com aquela sensação: <strong style="color:#fff;font-weight:500">trabalhei 12 horas e não sobrou tempo para o trabalho que importa.</strong></p>
+    <p style="font-size:16px;line-height:1.7;color:var(--t2);margin:0">Cada contestação que leva 3 horas em vez de 50 minutos é um cliente que você não atendeu, uma consulta que não agendou, uma causa que não captou. <strong style="color:#fff;font-weight:500">O tempo que a operação consome não volta — e o faturamento que ele levaria junto, também não.</strong> E quando você tenta acelerar com o ChatGPT, o resultado vem genérico. Ou pior: com jurisprudência que não existe.</p>
+  </div>
+  <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold);margin:48px 0 0;max-width:30ch;line-height:1.3">Dá para confiar nisso? Dá — mas não do jeito que a maioria está usando.</p>
+</section>
+
+<!-- ========== A VIRADA ========== -->
+<section class="section" id="virada">
+  <div class="why">
+    <div class="why__left reveal">
+      <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">02</span>A VIRADA</div>
+      <h2 class="h2">O problema não é a IA. <em>É usar IA sem método.</em></h2>
+      <p class="lede">Copiar um prompt da internet e colar no ChatGPT é como pedir a um estagiário de primeiro semestre que redija uma peça complexa sem nenhuma instrução. O resultado até tem cara de peça — mas não sobrevive a uma leitura técnica.</p>
+      <p class="lede" style="margin-top:20px">A IA erra quando não recebe contexto. Inventa quando não tem fonte. Generaliza quando o comando é vago. É por isso que tanto advogado que “já tentou” desistiu — ou usa com medo. Não porque a ferramenta é ruim, mas porque <strong style="color:#fff;font-weight:500">ninguém ensinou a operar com o rigor que o Direito exige.</strong></p>
+      <p class="lede" style="margin-top:20px">Os grandes escritórios não têm esse problema: têm times de inovação e sistemas próprios. Você não precisa de tudo isso. Precisa do <strong style="color:#fff;font-weight:500">método certo</strong>. É o que o ADV-IA entrega.</p>
+    </div>
+    <div class="why__right reveal">
+      <div class="why__viz">
+        <div class="why__orbit">
+          <svg viewBox="0 0 400 400" fill="none" stroke="rgba(10,136,244,.4)" stroke-width="1">
+            <circle cx="200" cy="200" r="120" stroke-dasharray="3 6"/>
+            <circle cx="200" cy="200" r="170" stroke-dasharray="2 8"/>
+            <circle cx="200" cy="200" r="195" stroke="rgba(10,136,244,.2)"/>
+          </svg>
+        </div>
+        <div class="why__core">
+          <div class="why__wordmark" aria-label="ADV-IA">
+            <span class="wm-direito">advogado</span>
+            <span class="wm-num" style="font-size:clamp(64px,10vw,120px)">+IA</span>
+            <span class="wm-tag">com método</span>
+          </div>
+        </div>
+        <div class="why__chip why__chip--1"><i></i>Prompt</div>
+        <div class="why__chip why__chip--2"><i></i>Contexto</div>
+        <div class="why__chip why__chip--3"><i></i>Agentes</div>
+        <div class="why__chip why__chip--4"><i></i>Segurança</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESULTADO ========== -->
+<section class="section" id="resultado">
+  <div class="reveal" style="max-width:68ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">03</span>O RESULTADO</div>
+    <h2 class="h2">O que muda quando você <span class="serif">domina o método</span>.</h2>
+    <p class="lede">Você volta a pensar. A IA executa. E o escritório fatura mais com a mesma estrutura — em quatro frentes concretas.</p>
+  </div>
+  <div class="results reveal-stagger">
+    <div class="result">
+      <div class="result__k">
+        <div class="result__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>No seu tempo</h3>
+      </div>
+      <p>A contestação que consumia 3 horas sai em menos de <em>50 minutos</em>. Contratos de 200 páginas analisados em 15. Minutas, pareceres e recursos no mesmo turno em que antes você produzia uma única peça. Você fecha o notebook às 18h — com tudo entregue.</p>
+    </div>
+    <div class="result">
+      <div class="result__k">
+        <div class="result__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Na segurança dos clientes</h3>
+      </div>
+      <p>Você sabe exatamente como usar IA <em>sem expor dados sensíveis</em>. Aplica protocolos de verificação que eliminam jurisprudência inventada. E tem clareza sobre onde a IA para e começa a sua responsabilidade. Sem zona cinzenta. Sem medo de assinar a peça.</p>
+    </div>
+    <div class="result">
+      <div class="result__k">
+        <div class="result__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>Na competitividade</h3>
+      </div>
+      <p>Você opera com a mesma lógica dos escritórios que investem pesado em tecnologia — <em>sem o orçamento deles</em>. Atende mais clientes no mesmo tempo, elimina retrabalho e precifica pela estratégia que entrega, não pelas horas que gasta.</p>
+    </div>
+    <div class="result">
+      <div class="result__k">
+        <div class="result__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>No seu faturamento</h3>
+      </div>
+      <p>Entregar uma contestação em 50 minutos em vez de 3 horas libera <em>10 horas por semana</em> — horas que viram novas consultas, contratos e causas. Você não precisa trabalhar mais para faturar mais. Precisa parar de gastar tempo com o que a IA faz melhor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTEÚDO ========== -->
+<section class="section" id="conteudo">
+  <div class="reveal" style="max-width:70ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">04</span>O CONTEÚDO</div>
+    <h2 class="h2">4 módulos. 32 aulas. <span class="serif">15 horas</span> de formação aplicada.</h2>
+    <p class="lede">Uma trilha progressiva: dos fundamentos de IA até a criação dos seus próprios agentes jurídicos — cada aula com protocolo de segurança embutido.</p>
+  </div>
+  <div class="modules reveal-stagger">
+    <div class="module">
+      <div class="module__big">01</div>
+      <div class="module__tag">Módulo 1 · 9 aulas</div>
+      <h3>Fundamentos de IA</h3>
+      <p>A base que 95% dos advogados que “usam IA” não têm. Modelos fundacionais, IA multimodal, os principais modelos aplicáveis ao Direito e o que já roda nos tribunais brasileiros. Sem jargão desnecessário — com a profundidade que a sua profissão exige.</p>
+    </div>
+    <div class="module">
+      <div class="module__big">02</div>
+      <div class="module__tag">Módulo 2 · 10 aulas</div>
+      <h3>O Advogado como Mestre da IA</h3>
+      <p>O coração do curso. Engenharia de Prompt e Engenharia de Contexto — os dois pilares que definem se a IA entrega lixo ou uma peça que você assina com segurança. Frameworks PTF, CIPFE e PTLFPRCD aplicados a petições, contratos e pareceres. NotebookLM, Otimizador de Prompts, ZeroGPT e AI Humanizer na prática.</p>
+    </div>
+    <div class="module">
+      <div class="module__big">03</div>
+      <div class="module__tag">Módulo 3 · 6 aulas</div>
+      <h3>Construindo Agentes de IA</h3>
+      <p>Saia do uso pontual e entre no uso sistemático. Crie agentes especializados — um para trabalhista, outro para cível, outro para contratos — cada um com personalidade e instruções próprias. Segurança de dados sensíveis, Google Gems e GPTs personalizados da OpenAI.</p>
+    </div>
+    <div class="module">
+      <div class="module__big">04</div>
+      <div class="module__tag">Módulo 4 · 7 aulas</div>
+      <h3>Casos Reais e Aplicabilidades</h3>
+      <p>Da teoria para a mesa do escritório. Petições reais, análise de contratos, due diligence, automação de atividades repetitivas e atendimento ao cliente assistido por IA. Cada aula é um caso prático com protocolo de segurança embutido.</p>
+    </div>
+    <div class="module module--extra">
+      <div class="module__badge">+ bônus</div>
+      <div>
+        <div class="module__tag">Conteúdo extra</div>
+        <h3 style="margin-bottom:8px">Ferramentas Jurídicas Brasileiras</h3>
+        <p style="max-width:62ch">Aulas dedicadas a <strong style="color:#fff;font-weight:500">Jusbrasil, Jurídico AI, Turivius e LawX</strong>. Como extrair o máximo de cada plataforma e integrar com os frameworks do curso.</p>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:40px">
+    <a href="#preco" class="btn btn--primary btn--lg">
+      Quero produzir mais em menos tempo
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ========== DIAGNÓSTICO ========== -->
+<section class="section" id="diagnostico">
+  <div class="reveal" style="max-width:60ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">05</span>DIAGNÓSTICO</div>
+    <h2 class="h2">Este curso é <em>para você?</em></h2>
+  </div>
+  <div class="diag reveal-stagger">
+    <div class="diag__col diag__col--yes">
+      <h3 class="diag__h"><span class="mk">✓</span>É para você se…</h3>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>É advogado autônomo ou sócio e a rotina operacional consome todo o seu tempo — sobrando pouco para estratégia, captação ou estudo.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Já tentou usar ChatGPT no trabalho, mas ficou inseguro com o resultado. Não sabe se pode confiar, nem se está expondo dados.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Percebe que escritórios maiores ganham vantagem tecnológica a cada mês — e quer se posicionar antes que a distância fique irreversível.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Quer usar IA com método e responsabilidade — não como atalho, mas como ferramenta de alta performance.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Não sabe programar e não quer aprender. Quer comandar a IA em linguagem natural, com a precisão que o Direito exige.</li>
+      </ul>
+    </div>
+    <div class="diag__col diag__col--no">
+      <h3 class="diag__h"><span class="mk">✕</span>Não é para você se…</h3>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Busca um botão que gera peças prontas sem revisão humana. A IA é ferramenta — a assinatura na peça continua sendo sua.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Não está disposto a dedicar 15 horas para mudar o nível da sua prática.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Acredita que a advocacia vai continuar sendo feita do mesmo jeito nos próximos 5 anos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROFESSOR ========== -->
+<section class="section" id="professor">
+  <div class="reveal" style="max-width:60ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">06</span>QUEM ENSINA</div>
+    <h2 class="h2">Quem criou o <em>ADV-IA</em>.</h2>
+  </div>
+  <div class="prof">
+    <div class="prof__media reveal">
+      <div class="prof__photo">
+        <span class="prof__corner prof__corner--tl"></span>
+        <span class="prof__corner prof__corner--br"></span>
+        <img src="assets/speakers/thiago-sobral.jpeg" alt="Thiago Sobral">
+      </div>
+      <div class="prof__badges">
+        <div class="prof__badge"><b>OAB-SP</b><span>Comissão de Direito Digital</span></div>
+        <div class="prof__badge"><b>26+ anos</b><span>em tecnologia</span></div>
+        <div class="prof__badge"><b>Impacta</b><span>Professor</span></div>
+      </div>
+    </div>
+    <div class="prof__body reveal">
+      <p class="prof__lead"><strong>Thiago Sobral</strong> tem 26 anos de carreira em tecnologia corporativa, com projetos globais de inteligência artificial, cibersegurança e cloud computing.</p>
+      <p class="prof__sub">Três fatos que importam para você:</p>
+      <div class="prof__facts">
+        <div class="fact">
+          <div class="fact__n">01</div>
+          <p><strong>Professor da Impacta</strong> e membro da Comissão de Direito Digital da OAB-SP desde 2018 — acompanhando de perto como a IA transforma a prática jurídica no Brasil.</p>
+        </div>
+        <div class="fact">
+          <div class="fact__n">02</div>
+          <p><strong>Diretor Global e membro do Conselho de Administração do Linux Professional Institute</strong> (Canadá), em segundo mandato. Construiu e liderou comunidades de tecnologia com mais de 100 mil profissionais.</p>
+        </div>
+        <div class="fact">
+          <div class="fact__n">03</div>
+          <p><strong>O ADV-IA não nasceu na internet.</strong> Foi ministrado presencialmente para advogados da ESA — Escola Superior de Advocacia da OAB/Guarulhos. A versão online é a evolução desse trabalho.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROVA SOCIAL ========== -->
+<section class="section" id="depoimentos">
+  <div class="reveal" style="max-width:60ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">07</span>PROVA SOCIAL</div>
+    <h2 class="h2">Quem já aplicou <span class="serif">o método</span>.</h2>
+  </div>
+  <div class="quotes reveal-stagger">
+    <div class="quote">
+      <div class="quote__mark">“</div>
+      <p>Economia de tempo enorme e qualidade técnica das peças muito acima do que eu fazia antes.</p>
+      <div class="quote__who">Advogada Cível<span>Aluna ADV-IA</span></div>
+    </div>
+    <div class="quote">
+      <div class="quote__mark">“</div>
+      <p>Pela primeira vez uso IA sem medo de errar. Sei exatamente o que pode e o que não pode entrar.</p>
+      <div class="quote__who">Sócio de Escritório<span>Aluno ADV-IA</span></div>
+    </div>
+    <div class="quote">
+      <div class="quote__mark">“</div>
+      <p>Sempre achei que não era bom com tecnologia. O método é em linguagem natural — quem redige petição consegue aplicar.</p>
+      <div class="quote__who">Advogado Trabalhista<span>Aluno ADV-IA</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DIFERENCIAIS IMPACTA ========== -->
+<section class="diff" id="diferenciais">
+  <div class="diff__inner">
+    <div class="reveal" style="max-width:66ch">
+      <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">08</span>POR QUE IMPACTA</div>
+      <h2 class="h2">A maior escola de treinamentos de <span class="serif">tecnologia</span> do Brasil.</h2>
+      <p class="lede">Onde você estuda e se especializa faz toda a diferença. Encontrar um lugar que te acolha e te guie ao sucesso muda uma carreira — e estes são os números que fazem da Impacta a melhor escolha para a sua.</p>
+    </div>
+
+    <div class="impstats reveal-stagger">
+      <div class="impstat"><b>2 milhões</b><span>alunos formados</span></div>
+      <div class="impstat"><b>+30 mil</b><span>empresas confiam em nós</span></div>
+      <div class="impstat"><b>90%</b><span>dos alunos empregados</span></div>
+      <div class="impstat"><b>100%</b><span>professores atuantes no mercado</span></div>
+    </div>
+
+    <div class="impcreds reveal-stagger">
+      <span class="impcred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Maior escola de tecnologia, gestão e design do Brasil</span>
+      <span class="impcred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Metodologia de ensino e certificação exclusivas</span>
+      <span class="impcred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Eleita 10× o melhor fornecedor de RH</span>
+    </div>
+
+    <h3 class="diff__sub reveal">O que isso significa para a sua prática</h3>
+    <div class="diff__grid reveal-stagger">
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></div>
+        <h3>Certificado Impacta</h3>
+        <p>Conclua o ADV-IA e receba certificado digital com o selo de uma das maiores escolas de tecnologia do país — peso real no seu currículo e na OAB.</p>
+      </div>
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div>
+        <h3>Método validado em sala</h3>
+        <p>Os frameworks PTF, CIPFE e PTLFPRCD não são teoria de internet — foram ministrados presencialmente para advogados da ESA-OAB antes de virarem curso.</p>
+      </div>
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Segurança jurídica em primeiro lugar</h3>
+        <p>Cada aula carrega protocolo de proteção de dados e verificação de fontes. Você aprende a usar IA dentro do que a OAB e a LGPD exigem.</p>
+      </div>
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 10h18M8 18v3M16 18v3M5 21h14"/></svg></div>
+        <h3>100% online, no seu ritmo</h3>
+        <p>Formação gravada, com 12 meses de acesso. Assista do escritório ou de casa, revise quantas vezes quiser e aplique já no processo do dia seguinte.</p>
+      </div>
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Comunidade de alunos</h3>
+        <p>Canal exclusivo para dúvidas, troca de experiências entre advogados e atualizações contínuas sobre IA no Direito.</p>
+      </div>
+      <div class="dcard">
+        <div class="dcard__icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9z"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
+        <h3>Conteúdo sempre atualizado</h3>
+        <p>A IA muda rápido — e o curso acompanha. Novas ferramentas e frameworks entram na plataforma sem custo adicional para alunos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OFERTA / PREÇO ========== -->
+<section class="section" id="preco">
+  <div class="reveal" style="max-width:64ch">
+    <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">09</span>SEU INVESTIMENTO</div>
+    <h2 class="h2">Tudo que você recebe ao entrar no <em>ADV-IA</em>.</h2>
+    <p class="lede">Um pacote completo de formação, ferramentas e comunidade — por uma fração do valor cheio.</p>
+  </div>
+  <div class="offer">
+    <div class="stack reveal">
+      <div class="stack__item">
+        <div>
+          <h4>Curso completo — 32 aulas em 4 módulos</h4>
+          <p>Dos fundamentos de IA à criação de agentes personalizados. 15 horas de formação técnica e prática.</p>
+        </div>
+        <div class="stack__val">R$ 1.997</div>
+      </div>
+      <div class="stack__item">
+        <div>
+          <h4>Ferramentas Jurídicas Brasileiras</h4>
+          <p>Aulas sobre Jusbrasil, Jurídico AI, Turivius e LawX — como usar cada plataforma e integrar aos frameworks.</p>
+        </div>
+        <div class="stack__val">R$ 397</div>
+      </div>
+      <div class="stack__item">
+        <div>
+          <h4>Biblioteca de Prompts — PTF, CIPFE e PTLFPRCD</h4>
+          <p>Modelos prontos e editáveis para petições, contratos, recursos e pareceres. Para aplicar no dia seguinte à compra.</p>
+        </div>
+        <div class="stack__val">R$ 497</div>
+      </div>
+      <div class="stack__item">
+        <div>
+          <h4>Acesso à comunidade de alunos</h4>
+          <p>Canal exclusivo para dúvidas, troca de experiências e atualizações sobre IA no Direito.</p>
+        </div>
+        <div class="stack__val">R$ 197</div>
+      </div>
+      <div class="stack__total">
+        <span>Valor total</span>
+        <b>R$ 3.188</b>
+      </div>
+    </div>
+    <aside class="pricecard reveal">
+      <div class="pricecard__eyebrow">Condição de lançamento</div>
+      <div class="pricecard__from">De <s>R$ 1.997</s> por apenas</div>
+      <div class="pricecard__big">12x <em>R$ 49,70</em></div>
+      <div class="pricecard__cash">ou <b>R$ 497</b> à vista</div>
+      <a href="https://impacta.site.engaged.com.br/p/checkout/4jtt6rr7ti" target="_blank" rel="noopener" class="btn btn--lime btn--lg">
+        Garantir meu acesso agora
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="pricecard__sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Compra 100% segura</div>
+      <div class="pricecard__scarce">Esta condição tem prazo. Quando expirar, o preço volta para R$ 1.997 — sem exceções.</div>
+    </aside>
+  </div>
+  <div class="access-note reveal">
+    <div class="access-note__icn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+    </div>
+    <div class="access-note__body">
+      <span class="access-note__tag">RÁPIDO &amp; 100% ONLINE</span>
+      <p>Assim que a compra é confirmada, você recebe por e-mail <strong>em até 24 horas</strong> os dados de acesso à plataforma. Dali em diante é só começar — <em>e se preparar para ser o advogado do futuro.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section" id="faq">
+  <div class="faq">
+    <div class="reveal">
+      <div class="kicker"><span class="kicker__rule"></span><span class="kicker__num">10</span>DÚVIDAS FREQUENTES</div>
+      <h2 class="h2">Antes de <em>garantir</em> seu acesso.</h2>
+      <p class="lede" style="margin-top:24px">Ainda com dúvida? Fale com a equipe da Impacta pelo <a href="https://api.whatsapp.com/send?phone=551132548300&text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ADVIA" target="_blank" rel="noopener" style="color:var(--gold);border-bottom:1px solid var(--gold)">WhatsApp</a>.</p>
+    </div>
+    <div class="faq__list">
+      <details class="qa" open>
+        <summary>Preciso saber programar?<span class="plus">+</span></summary>
+        <div class="qa__body">Não. Todo o método é em linguagem natural — você comanda a IA escrevendo, do mesmo jeito que redige uma petição. Não há uma linha de código no curso.</div>
+      </details>
+      <details class="qa">
+        <summary>O curso serve para qualquer área do Direito?<span class="plus">+</span></summary>
+        <div class="qa__body">Sim. Os frameworks (PTF, CIPFE, PTLFPRCD) são aplicáveis a petições, contratos, pareceres e recursos de qualquer área — cível, trabalhista, penal, empresarial. E você aprende a criar agentes específicos para a sua prática.</div>
+      </details>
+      <details class="qa">
+        <summary>Já uso o ChatGPT no trabalho. O curso vai me ajudar?<span class="plus">+</span></summary>
+        <div class="qa__body">Especialmente. A maioria usa IA sem método e obtém resultados genéricos — ou perigosos. O ADV-IA mostra como dar contexto, controlar fontes e validar saídas, transformando a ferramenta que você já tem em performance real e segura.</div>
+      </details>
+      <details class="qa">
+        <summary>E se a IA inventar jurisprudência e eu não perceber?<span class="plus">+</span></summary>
+        <div class="qa__body">É exatamente o que o método previne. Você aprende protocolos de verificação de fontes e checagem que eliminam a “alucinação” jurídica — sabendo sempre onde a IA para e onde começa a sua responsabilidade ao assinar a peça.</div>
+      </details>
+      <details class="qa">
+        <summary>Como funciona o acesso?<span class="plus">+</span></summary>
+        <div class="qa__body">100% online e gravado. Após a compra você recebe o acesso imediato à plataforma e assiste às 32 aulas no seu ritmo, quantas vezes quiser, por 12 meses.</div>
+      </details>
+      <details class="qa">
+        <summary>Tem suporte para dúvidas?<span class="plus">+</span></summary>
+        <div class="qa__body">Sim. Você entra na comunidade exclusiva de alunos, onde tira dúvidas, troca experiências com outros advogados e recebe atualizações sobre IA no Direito.</div>
+      </details>
+      <details class="qa">
+        <summary>O curso fica desatualizado rápido?<span class="plus">+</span></summary>
+        <div class="qa__body">A IA evolui rápido — e o curso acompanha. Novas ferramentas e frameworks relevantes entram na plataforma sem custo adicional enquanto seu acesso estiver ativo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta">
+  <div class="cta__pattern"></div>
+  <div class="cta__inner">
+    <div class="cta__pill"><span style="width:8px;height:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 12px var(--lime)"></span>CONDIÇÃO DE LANÇAMENTO · POR TEMPO LIMITADO</div>
+    <h2>A distância entre você e o advogado que produz o dobro <em style="color:var(--gold);font-style:normal">não é talento.</em></h2>
+    <span class="cta__serif">É método.</span>
+    <p>Você pode continuar peticionando manualmente, buscando jurisprudência no braço, revisando contratos até as 23h. Ou dominar a mesma tecnologia que já está nos tribunais superiores e nos grandes escritórios — adaptada para a sua realidade, com segurança técnica e sem equipe de TI. <strong style="color:#fff">32 aulas. 15 horas. 12 meses de acesso.</strong></p>
+    <div class="cta__actions">
+      <a href="https://impacta.site.engaged.com.br/p/checkout/4jtt6rr7ti" target="_blank" rel="noopener" class="btn btn--lime btn--lg">
+        Garantir meu acesso — 12x R$ 49,70
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=551132548300&text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ADVIA" target="_blank" rel="noopener" class="btn btn--ghost">
+        Falar no WhatsApp
+      </a>
+    </div>
+    <div class="evbar">
+      <div><span class="k">FORMATO</span><span class="v">100% online</span></div>
+      <div><span class="k">CARGA</span><span class="v"><em>32</em> aulas · 15h</span></div>
+      <div><span class="k">ACESSO</span><span class="v"><em>12</em> meses</span></div>
+      <div><span class="k">SUPORTE</span><span class="v">Comunidade</span></div>
+    </div>
+    <p class="cta__legal" style="margin-top:32px">Uma formação <b>Impacta</b> com o Prof. <b>Thiago Sobral</b> · Comissão de Direito Digital da OAB-SP. A única coisa que você arrisca é continuar do jeito que está.</p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__brand">
+      <img src="assets/impacta-branco.png" alt="Impacta">
+      <p>ADV-IA · Inteligência Artificial aplicada ao Direito. Uma formação 100% online da Impacta com o Prof. Thiago Sobral.</p>
+      <span class="serif-tag">a inteligência artificial entra na banca.</span>
+    </div>
+    <div>
+      <h5>O curso</h5>
+      <a href="#problema">O problema</a>
+      <a href="#resultado">Resultados</a>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#professor">Professor</a>
+      <a href="#diferenciais">Por que Impacta</a>
+    </div>
+    <div>
+      <h5>Inscrição</h5>
+      <a href="https://impacta.site.engaged.com.br/p/checkout/4jtt6rr7ti" target="_blank" rel="noopener">Garantir meu acesso</a>
+      <a href="#preco">Investimento</a>
+      <a href="#faq">Perguntas frequentes</a>
+      <a href="https://api.whatsapp.com/send?phone=551132548300&text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ADVIA" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div>
+      <h5>Institucional</h5>
+      <a href="https://www.impacta.com.br" target="_blank" rel="noopener">impacta.com.br</a>
+      <a href="https://www.linkedin.com/school/faculdade-impacta-de-tecnologia/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/faculdadeimpacta/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="foot__copy">
+    <span>© 2026 Impacta · ADV-IA · Inteligência Artificial aplicada ao Direito</span>
+    <span style="font-family:var(--serif);font-style:italic;color:var(--gold)">a inteligência artificial entra na banca.</span>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="wafab" href="https://api.whatsapp.com/send?phone=551132548300&text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ADVIA" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.8-.9-2.08-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.18-.18.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.53.08-.8.38s-1.05 1.03-1.05 2.5 1.08 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.5.7.3 1.27.48 1.7.62.72.23 1.37.2 1.88.12.58-.08 1.8-.73 2.05-1.44.25-.7.25-1.3.18-1.43-.07-.12-.27-.2-.57-.35zM12 2a10 10 0 00-8.6 15.07L2 22l5.05-1.32A10 10 0 1012 2z"/></svg>
+  <span>Tirar dúvidas</span>
+</a>
+
+<!-- ============================ WHATSAPP MODAL (barreira de lead) ============================ -->
+<style>
+.advia-modal-bg{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+.advia-modal-bg.is-open{display:flex;animation:adviaModalIn .25s ease}
+@keyframes adviaModalIn{from{opacity:0}to{opacity:1}}
+.advia-modal{position:relative;max-width:520px;width:100%;background:#030200;border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:40px 36px;animation:adviaModalUp .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes adviaModalUp{from{opacity:0;transform:translateY(40px) scale(.98)}to{opacity:1;transform:none}}
+.advia-modal__close{position:absolute;top:16px;right:16px;background:none;border:none;color:#808080;font-size:24px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:color .15s;line-height:1}
+.advia-modal__close:hover{color:#fff}
+.advia-modal__kicker{font-family:'Ubuntu Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;color:#0A88F4;margin-bottom:14px;text-transform:uppercase}
+.advia-modal h3{margin:0 0 10px;font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:#fff}
+.advia-modal h3 em{font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;color:#0A88F4}
+.advia-modal p{margin:0 0 24px;color:#C8C8C8;font-size:14px;line-height:1.55}
+.advia-modal form{display:flex;flex-direction:column;gap:14px}
+.advia-modal .field{display:flex;flex-direction:column;gap:6px}
+.advia-modal .field label{font-size:12px;letter-spacing:.04em;color:#808080;text-transform:uppercase}
+.advia-modal .field input{background:#0a0a0a;border:1px solid rgba(255,255,255,.16);border-radius:8px;color:#fff;padding:13px 14px;font-size:15px;font-family:inherit;outline:none;transition:border-color .15s}
+.advia-modal .field input:focus{border-color:#0A88F4}
+.advia-modal__submit{margin-top:8px;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px;background:#0A88F4;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s}
+.advia-modal__submit:hover{background:#2398ff}
+.advia-modal__submit:disabled{opacity:.6;cursor:default}
+.advia-modal__success{display:none;text-align:center;padding:20px 0}
+.advia-modal__success.is-on{display:block}
+.advia-modal__success svg{width:64px;height:64px;color:#0A88F4;margin:0 auto 20px}
+.advia-modal__success h4{margin:0 0 10px;font-size:22px;font-weight:600;color:#fff}
+.advia-modal__success p{margin:0;color:#C8C8C8}
+.advia-modal.is-success form,.advia-modal.is-success #waSkipLink{display:none}
+</style>
+<div class="advia-modal-bg" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+  <div class="advia-modal" id="waModalInner">
+    <button class="advia-modal__close" type="button" data-close-wa aria-label="Fechar">×</button>
+    <div class="advia-modal__kicker">ANTES DE ABRIR O WHATSAPP</div>
+    <h3 id="waTitle">Só pra a gente saber <em>quem é você</em>.</h3>
+    <p>Em 30 segundos. Quando enviar, abrimos o WhatsApp pra você continuar a conversa — e se cair, a gente retoma do nosso lado.</p>
+    <form id="waForm" novalidate>
+      <div class="field">
+        <label for="wa-name">Nome completo</label>
+        <input id="wa-name" name="name" type="text" required autocomplete="name" placeholder="Seu nome">
+      </div>
+      <div class="field">
+        <label for="wa-email">E-mail</label>
+        <input id="wa-email" name="email" type="email" required autocomplete="email" placeholder="voce@escritorio.com.br">
+      </div>
+      <div class="field">
+        <label for="wa-phone">WhatsApp (com DDD)</label>
+        <input id="wa-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(11) 99999-9999">
+      </div>
+      <button class="advia-modal__submit" type="submit">
+        Abrir WhatsApp
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      </button>
+    </form>
+    <a id="waSkipLink" href="#" target="_blank" rel="noopener" data-wa-skip
+       style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:12px 18px;border:2px solid #25D366;border-radius:8px;color:#1FAe54;background:#fff;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.595 5.39l-.999 3.648 3.893-1.737zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      Prefiro ir direto pro WhatsApp
+    </a>
+    <div class="advia-modal__success" id="waSuccess">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+      <h4>Pronto! O WhatsApp abriu em uma nova aba.</h4>
+      <p style="margin-bottom:14px">Se não abriu (bloqueador de popup), clique no botão abaixo:</p>
+      <p style="text-align:center">
+        <a id="waManualLink" href="#" target="_blank" rel="noopener" style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;font-weight:bold;padding:12px 24px;border-radius:8px;font-size:15px">Abrir WhatsApp →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== captureWaLead — barreira do WhatsApp: cria Lead + Deal RD com channel=whatsapp ===== */
+window.captureWaLead = async function captureWaLead(payload) {
+  const CFG = window.ADVIA || {};
+  const u = CFG.utms || {};
+  const body = {
+    campaign_slug: CFG.CAMPAIGN_SLUG,
+    name:    payload.name   || '',
+    email:   payload.email  || '',
+    phone:   payload.phone  || '',
+    channel: 'whatsapp',
+    source_page: location.href,
+    extra: {
+      intent:         'whatsapp_chat',
+      curso:          'ADV-IA',
+      origem_clique:  payload._cta_id || 'whatsapp'
+    },
+    utm: {
+      source:   u.utm_source   || null,
+      medium:   u.utm_medium   || null,
+      campaign: u.utm_campaign || null,
+      content:  u.utm_content  || null,
+      term:     u.utm_term     || null
+    }
+  };
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event:'lead_form_submit', via:'whatsapp_barrier', lead_email:payload.email});
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead', {content_name:'ADV-IA', content_category:'curso', via:'whatsapp_barrier'});
+  }
+  if (typeof CFG.sendIrisEvent === 'function') CFG.sendIrisEvent('lead_form', {channel:'whatsapp'});
+  const res = await fetch(CFG.INTEGRACAO_RD_URL + '/api/leads', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(body), mode:'cors'
+  });
+  if (!res.ok) throw new Error('captureWaLead falhou: HTTP ' + res.status);
+  return res.json().catch(() => ({ok:true}));
+};
+
+/* ===== UTM resolution + capture (URL > sessionStorage > referrer) ===== */
+(() => {
+  const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  const params = new URLSearchParams(location.search);
+  let resolved = {};
+  let fromUrl = false;
+  keys.forEach(k => { const v = params.get(k); if (v) { resolved[k] = v; fromUrl = true; } });
+  if (fromUrl) {
+    keys.forEach(k => { try { if (resolved[k]) sessionStorage.setItem(k, resolved[k]); } catch(e){} });
+  } else {
+    const fromS = {}; let any = false;
+    keys.forEach(k => { try { const v = sessionStorage.getItem(k); if (v) { fromS[k] = v; any = true; } } catch(e){} });
+    if (any) {
+      resolved = fromS;
+    } else {
+      let refHost = '';
+      try { refHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase().replace(/^www\./,'') : ''; } catch(e){}
+      const here = location.hostname.toLowerCase().replace(/^www\./,'');
+      if (!refHost || refHost === here || refHost.endsWith('.' + here)) {
+        resolved = { utm_source:'(direct)', utm_medium:'(none)' };
+      } else if (/google|bing|yahoo|duckduckgo|baidu|yandex|ecosia/.test(refHost)) {
+        resolved = { utm_source: refHost.split('.')[0], utm_medium: 'organic' };
+      } else if (/facebook|instagram|linkedin|twitter|x\.com|t\.co|youtube|tiktok|whatsapp|pinterest|reddit/.test(refHost)) {
+        resolved = { utm_source: refHost.split('.')[0], utm_medium: 'social' };
+      } else {
+        resolved = { utm_source: refHost, utm_medium: 'referral' };
+      }
+    }
+  }
+  window.ADVIA = window.ADVIA || {};
+  window.ADVIA.utms = {
+    utm_source:   resolved.utm_source   || null,
+    utm_medium:   resolved.utm_medium   || null,
+    utm_campaign: resolved.utm_campaign || null,
+    utm_content:  resolved.utm_content  || null,
+    utm_term:     resolved.utm_term     || null,
+  };
+  keys.forEach(k => {
+    const el = document.querySelector(`input[name='${k}']`);
+    if (el) el.value = window.ADVIA.utms[k] || '';
+  });
+})();
+
+/* ===== WhatsApp barrier modal ===== */
+window.__adviaWa = { url: null, ctaId: null };
+(() => {
+  const bg = document.getElementById('waModal');
+  const inner = document.getElementById('waModalInner');
+  const form = document.getElementById('waForm');
+  const success = document.getElementById('waSuccess');
+  if (!bg || !form) return;
+
+  const cleanDigits = (s) => (s || '').replace(/\D/g, '');
+  const isValidEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((s || '').trim());
+  const normalizePhone = (s) => {
+    const d = cleanDigits(s);
+    if (d.length >= 12 && d.startsWith('55')) return '+' + d;
+    if (d.length === 10 || d.length === 11) return '+55' + d;
+    return null;
+  };
+  const clearFieldError = (input) => {
+    if (!input) return;
+    input.style.borderColor = '';
+    const err = input.parentElement.querySelector('.field-err');
+    if (err) err.remove();
+  };
+  const showFieldError = (input, msg) => {
+    if (!input) return;
+    input.style.borderColor = '#dc2626';
+    let err = input.parentElement.querySelector('.field-err');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'field-err';
+      err.style.cssText = 'color:#f87171;font-size:13px;line-height:18px;margin-top:6px;';
+      input.parentElement.appendChild(err);
+    }
+    err.textContent = msg;
+    input.focus();
+  };
+  const clearFormError = () => { const err = form.querySelector('.form-err'); if (err) err.remove(); };
+  const showFormError = (msg) => {
+    let err = form.querySelector('.form-err');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'form-err';
+      err.style.cssText = 'background:#3a1212;border:1px solid #7f1d1d;color:#fca5a5;padding:10px 14px;border-radius:6px;margin-top:12px;font-size:14px;line-height:20px;';
+      form.appendChild(err);
+    }
+    err.textContent = msg;
+  };
+  ['name','email','phone'].forEach(n => {
+    const inp = form.querySelector('[name=' + n + ']');
+    if (inp) inp.addEventListener('input', () => { clearFieldError(inp); clearFormError(); });
+  });
+
+  const open = (url, ctaId) => {
+    window.__adviaWa.url = url;
+    window.__adviaWa.ctaId = ctaId || 'whatsapp';
+    const skip = document.getElementById('waSkipLink');
+    if (skip && url) skip.setAttribute('href', url);
+    inner.classList.remove('is-success');
+    success.classList.remove('is-on');
+    const sub = form.querySelector('[type="submit"]');
+    sub.disabled = false;
+    sub.textContent = 'Abrir WhatsApp';
+    clearFormError();
+    ['name','email','phone'].forEach(n => clearFieldError(form.querySelector('[name=' + n + ']')));
+    bg.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('wa-name')?.focus(), 200);
+    if (window.dataLayer) window.dataLayer.push({event:'wa_form_open'});
+  };
+  const close = () => { bg.classList.remove('is-open'); document.body.style.overflow = ''; };
+  window.__adviaWa.open = open;
+  window.__adviaWa.close = close;
+
+  document.querySelectorAll('[data-close-wa]').forEach(b => b.addEventListener('click', close));
+  bg.addEventListener('click', e => { if (e.target === bg) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && bg.classList.contains('is-open')) close(); });
+
+  const skipLink = document.getElementById('waSkipLink');
+  if (skipLink) skipLink.addEventListener('click', () => {
+    if (window.dataLayer) window.dataLayer.push({ event: 'wa_skip_form', cta_id: window.__adviaWa.ctaId || 'whatsapp' });
+    close();
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+    const nameIn  = form.querySelector('[name=name]');
+    const emailIn = form.querySelector('[name=email]');
+    const phoneIn = form.querySelector('[name=phone]');
+
+    clearFormError();
+    [nameIn, emailIn, phoneIn].forEach(clearFieldError);
+    if (!payload.name || payload.name.trim().length < 2) { showFieldError(nameIn, 'Digite seu nome completo.'); return; }
+    if (!isValidEmail(payload.email)) { showFieldError(emailIn, 'Digite um e-mail válido (ex: voce@escritorio.com.br).'); return; }
+    const normPhone = normalizePhone(payload.phone);
+    if (!normPhone) { showFieldError(phoneIn, 'Digite um WhatsApp válido com DDD. Ex: 11 99999-9999.'); return; }
+    payload.phone   = normPhone;
+    payload._cta_id = window.__adviaWa.ctaId;
+
+    const submitBtn = form.querySelector('[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    let popup = null;
+    try {
+      popup = window.open('about:blank', '_blank');
+      if (popup && popup.document) {
+        popup.document.write(
+          '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">' +
+          '<title>Abrindo WhatsApp…</title><meta name="color-scheme" content="light">' +
+          '<style>html,body{margin:0;height:100%;font-family:-apple-system,system-ui,Segoe UI,Arial,sans-serif;background:#F4F6F8;color:#0F4C81}' +
+          '.wrap{display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:14px;text-align:center;padding:24px}' +
+          '.dot{width:10px;height:10px;border-radius:50%;background:#25D366;animation:p 1s infinite alternate}' +
+          '@keyframes p{from{opacity:.3;transform:scale(.8)}to{opacity:1;transform:scale(1.2)}}</style>' +
+          '</head><body><div class="wrap"><div class="dot"></div>' +
+          '<div><b>Abrindo WhatsApp…</b></div>' +
+          '<div style="color:#6B7280;font-size:14px">Pode fechar essa janela quando o WhatsApp carregar.</div>' +
+          '</div></body></html>'
+        );
+      }
+    } catch(e) {}
+
+    try {
+      await window.captureWaLead(payload);
+      const url = window.__adviaWa.url;
+      const manualLink = document.getElementById('waManualLink');
+      if (manualLink && url) manualLink.setAttribute('href', url);
+      inner.classList.add('is-success');
+      success.classList.add('is-on');
+      if (popup && !popup.closed && url) {
+        try { popup.location.href = url; } catch(e) {}
+      }
+    } catch(err) {
+      if (popup) { try { popup.close(); } catch(e) {} }
+      console.error('[WA Barrier] submit failed:', err);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Tentar novamente';
+      showFormError('Não consegui registrar agora. Verifique e-mail e telefone e tente de novo.');
+    }
+  });
+})();
+</script>
+
+<!-- ===================== ADV-IA · TRACKING IRIS + PIXEL ===================== -->
+<script>
+(() => {
+  const CFG = window.ADVIA || {};
+  const pixelOn = () => typeof window.fbq === 'function';
+  window.dataLayer = window.dataLayer || [];
+  const dl = (event, params) => window.dataLayer.push(Object.assign({event}, params || {}));
+  const utms = CFG.utms || {utm_source:null,utm_medium:null,utm_campaign:null,utm_content:null,utm_term:null};
+
+  /* Caminho 1 — contadores do cockpit IRIS (POST /api/events) */
+  CFG.sendIrisEvent = function (eventName, extra) {
+    try {
+      const body = {
+        product_slug:  CFG.PRODUCT_SLUG,
+        event_name:    eventName,
+        campaign_slug: CFG.CAMPAIGN_SLUG,
+        page_url:      location.href,
+        utm_source:    utms.utm_source,
+        utm_medium:    utms.utm_medium,
+        utm_campaign:  utms.utm_campaign,
+        utm_content:   utms.utm_content,
+        utm_term:      utms.utm_term,
+        referrer:      document.referrer || null
+      };
+      if (extra && extra.value != null) body.value = extra.value;
+      if (extra && extra.currency)      body.currency = extra.currency;
+      if (extra)                        body.meta = extra;
+      fetch(CFG.IRIS_EVENTS_URL, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body), keepalive:true, mode:'cors'
+      }).catch(()=>{});
+    } catch(e) {}
+  };
+
+  /* Caminho 2 — registro nominal anônimo (POST integracao-rd /api/leads/whatsapp-click) */
+  CFG.sendIrisLead = function (extra) {
+    try {
+      fetch(CFG.INTEGRACAO_RD_URL + '/api/leads/whatsapp-click', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          campaign_slug: CFG.CAMPAIGN_SLUG,
+          source_page: location.href,
+          utm: {
+            source: utms.utm_source, medium: utms.utm_medium,
+            campaign: utms.utm_campaign, content: utms.utm_content, term: utms.utm_term
+          }
+        }),
+        keepalive:true, mode:'cors'
+      }).catch(()=>{});
+    } catch(e) {}
+  };
+
+  /* Normaliza os CTAs de checkout p/ a URL única do Engaged + anexa UTMs resolvidas */
+  if (CFG.CHECKOUT_URL) {
+    const u = CFG.utms || {};
+    let checkoutUrl = CFG.CHECKOUT_URL;
+    try {
+      const url = new URL(CFG.CHECKOUT_URL);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { if (u[k]) url.searchParams.set(k, u[k]); });
+      checkoutUrl = url.toString();
+    } catch (e) {}
+    document.querySelectorAll('a[href*="engaged"]').forEach(a => a.setAttribute('href', checkoutUrl));
+  }
+
+  /* 1) lp_view */
+  CFG.sendIrisEvent('lp_view');
+  dl('lp_view');
+
+  /* 2) ViewContent — scroll 50% */
+  let vcSent = false;
+  const onScrollVC = () => {
+    if (vcSent) return;
+    if ((window.scrollY + window.innerHeight) < document.documentElement.scrollHeight * 0.5) return;
+    vcSent = true;
+    if (pixelOn()) window.fbq('track','ViewContent',{content_name:'ADV-IA',content_category:'curso'});
+    dl('view_content');
+    window.removeEventListener('scroll', onScrollVC);
+  };
+  window.addEventListener('scroll', onScrollVC, {passive:true});
+  onScrollVC();
+
+  /* 3) click_compra — todos os CTAs que apontam para o checkout Engaged */
+  document.querySelectorAll('a[href*="engaged"]').forEach(el => {
+    el.addEventListener('click', () => {
+      const extra = {cta_id:'cta-buy', value:CFG.TICKET_VALUE, currency:CFG.CURRENCY};
+      CFG.sendIrisEvent('click_compra', extra);
+      dl('click_compra', {value:CFG.TICKET_VALUE, currency:CFG.CURRENCY});
+      if (pixelOn()) window.fbq('track','InitiateCheckout',{
+        value:CFG.TICKET_VALUE, currency:CFG.CURRENCY,
+        content_name:'ADV-IA', content_category:'curso',
+        content_ids:['advia'], content_type:'product'
+      });
+    });
+  });
+
+  /* 4) click_whats — abre a barreira de lead antes de redirecionar ao WhatsApp */
+  document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const waUrl = el.getAttribute('href');
+      const ctaId = el.getAttribute('data-track') || 'whatsapp';
+      const extra = {channel:'whatsapp', cta_id: ctaId};
+      CFG.sendIrisEvent('click_whats', extra);
+      CFG.sendIrisLead(extra);
+      dl('click_whats', {cta_id: ctaId});
+      if (pixelOn()) window.fbq('track','Contact');
+      if (window.__adviaWa && typeof window.__adviaWa.open === 'function') {
+        e.preventDefault();
+        window.__adviaWa.open(waUrl, ctaId);
+      }
+    });
+  });
+})();
+</script>
+
+<script src="js/adv-ia-lp.js"></script>
+</body>
+</html>
