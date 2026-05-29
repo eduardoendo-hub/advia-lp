@@ -995,7 +995,7 @@ window.__adviaWa = { url: null, ctaId: null };
     const origin = (src && src !== '(direct)')
       ? src + (med && med !== '(none)' ? '/' + med : '')
       : 'site';
-    document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"]').forEach(a => {
+    document.querySelectorAll('a[href*="api.whatsapp.com"], a[href*="wa.me"]').forEach(a => {
       try {
         const url = new URL(a.getAttribute('href'));
         const base = url.searchParams.get('text') || '';
@@ -1038,7 +1038,7 @@ window.__adviaWa = { url: null, ctaId: null };
   });
 
   /* 4) click_whats — abre a barreira de lead antes de redirecionar ao WhatsApp */
-  document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"]').forEach(el => {
+  document.querySelectorAll('a[href*="api.whatsapp.com"], a[href*="wa.me"]').forEach(el => {
     el.addEventListener('click', (e) => {
       const waUrl = el.getAttribute('href');
       const ctaId = el.getAttribute('data-track') || 'whatsapp';
