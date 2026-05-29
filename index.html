@@ -987,6 +987,25 @@ window.__adviaWa = { url: null, ctaId: null };
     document.querySelectorAll('a[href*="engaged"]').forEach(a => a.setAttribute('href', checkoutUrl));
   }
 
+  /* Anexa a origem (canal) ao texto pré-preenchido do WhatsApp, pra o atendente
+     ver de onde o lead veio já na 1ª mensagem. O IRIS já registra a UTM via
+     click_whats; isto é só pro lado humano da conversa no WhatsApp. */
+  (() => {
+    const src = utms.utm_source, med = utms.utm_medium;
+    const origin = (src && src !== '(direct)')
+      ? src + (med && med !== '(none)' ? '/' + med : '')
+      : 'site';
+    document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"]').forEach(a => {
+      try {
+        const url = new URL(a.getAttribute('href'));
+        const base = url.searchParams.get('text') || '';
+        if (/\borigem:/i.test(base)) return;
+        url.searchParams.set('text', (base ? base + ' ' : '') + '[origem: ' + origin + ']');
+        a.setAttribute('href', url.toString());
+      } catch (e) {}
+    });
+  })();
+
   /* 1) lp_view */
   CFG.sendIrisEvent('lp_view');
   dl('lp_view');
