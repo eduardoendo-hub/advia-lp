@@ -779,6 +779,19 @@ window.captureWaLead = async function captureWaLead(payload) {
   });
 })();
 
+/* ===== Cupom: captura ?cupom= da URL (aliases coupon/voucher_code) e expõe
+   pro link de checkout. O Engaged aplica o desconto sozinho quando o checkout
+   recebe ?voucher_code=<codigo> (testado: aplica e some da URL). Persistido em
+   sessionStorage (escopo da visita — não gruda entre sessões como UTM antigo). */
+(() => {
+  const p = new URLSearchParams(location.search);
+  let cupom = p.get('cupom') || p.get('coupon') || p.get('voucher_code') || null;
+  if (cupom) { cupom = cupom.trim(); try { sessionStorage.setItem('cupom', cupom); } catch(e){} }
+  else { try { cupom = sessionStorage.getItem('cupom') || null; } catch(e){} }
+  window.ADVIA = window.ADVIA || {};
+  window.ADVIA.cupom = cupom || null;
+})();
+
 /* ===== WhatsApp barrier modal ===== */
 window.__adviaWa = { url: null, ctaId: null };
 (() => {
@@ -982,6 +995,9 @@ window.__adviaWa = { url: null, ctaId: null };
     try {
       const url = new URL(CFG.CHECKOUT_URL);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { if (u[k]) url.searchParams.set(k, u[k]); });
+      // Cupom vindo do anúncio (?cupom=) → Engaged aplica via ?voucher_code=
+      const cupom = (window.ADVIA && window.ADVIA.cupom) || null;
+      if (cupom) url.searchParams.set('voucher_code', cupom);
       checkoutUrl = url.toString();
     } catch (e) {}
     document.querySelectorAll('a[href*="engaged"]').forEach(a => a.setAttribute('href', checkoutUrl));
