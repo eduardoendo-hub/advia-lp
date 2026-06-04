@@ -779,15 +779,14 @@ window.captureWaLead = async function captureWaLead(payload) {
   });
 })();
 
-/* ===== Cupom: captura ?cupom= da URL (aliases coupon/voucher_code) e expõe
-   pro link de checkout. O Engaged aplica o desconto sozinho quando o checkout
-   recebe ?voucher_code=<codigo> (testado: aplica e some da URL). Persistido em
-   sessionStorage (escopo da visita — não gruda entre sessões como UTM antigo). */
+/* ===== Cupom: captura ?cupom= (aliases coupon/voucher_code) SOMENTE da URL e
+   expõe pro link de checkout. NÃO persiste — o cupom só é aplicado quando vem
+   na URL (ex: do anúncio). Entrar direto na página (sem ?cupom=) não aplica
+   cupom nenhum. O Engaged aplica o desconto via ?voucher_code=<codigo>. */
 (() => {
   const p = new URLSearchParams(location.search);
   let cupom = p.get('cupom') || p.get('coupon') || p.get('voucher_code') || null;
-  if (cupom) { cupom = cupom.trim(); try { sessionStorage.setItem('cupom', cupom); } catch(e){} }
-  else { try { cupom = sessionStorage.getItem('cupom') || null; } catch(e){} }
+  if (cupom) cupom = cupom.trim();
   window.ADVIA = window.ADVIA || {};
   window.ADVIA.cupom = cupom || null;
 })();
